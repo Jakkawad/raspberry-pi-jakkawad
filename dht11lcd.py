@@ -9,11 +9,7 @@ sensor = Adafruit_DHT.DHT11
 
 def setup():
         LCD1602.init(0x27, 1)
-        GPIO.setmode(GPIO.BCM)       # Numbers GPIOs by physical location
-        GPIO.setup(17, GPIO.OUT)     # Set Green Led Pin mode to output
-        GPIO.setup(27, GPIO.OUT)     # Set Red Led Pin mode to output
-
-
+        GPIO.setmode(GPIO.BCM)
 
 def loop():
         while True:
@@ -34,25 +30,15 @@ def loop():
                         print 'else'
                         GPIO.output(27, GPIO.HIGH)
                 time.sleep(0.5)
-                GPIO.output(17, GPIO.LOW)
-                GPIO.output(27, GPIO.LOW)
-#               GPIO.output(17, GPIO.HIGH)
-#               time.sleep(0.5)
-#               GPIO.output(27, GPIO.HIGH)
-#               time.sleep(0.5)
-#               GPIO.output(17, GPIO.LOW)
-#               time.sleep(0.5)
-#               GPIO.output(27, GPIO.LOW)
+                
 def destroy():
-#       GPIO.output(17, GPIO.HIGH)       # Green led off
-#       GPIO.output(27, GPIO.HIGH)       # Red led off
-        GPIO.cleanup()                     # Release resource
+        GPIO.cleanup()
 
-if __name__ == '__main__':     # Program start from here
+if __name__ == '__main__':
         setup()
         try:
                 loop()
-        except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
+        except KeyboardInterrupt:
                 destroy()
 
 
