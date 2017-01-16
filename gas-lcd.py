@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO
 import LCD1602
 #Code
 GPIO.setwarnings(False)
-#Code
+#Configure Gpio Pin Number
 def setup():
 	#Setting GPIO
 	LCD1602.init(0x27, 1)
